@@ -4,18 +4,13 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class RoundViewDelegate {
@@ -24,7 +19,12 @@ public class RoundViewDelegate {
     private GradientDrawable gd_background = new GradientDrawable();
     private GradientDrawable gd_background_press = new GradientDrawable();
     private int backgroundColor;
+    private int backgroundStartColor;
+    private int backgroundEndColor;
     private int backgroundPressColor;
+    private int backgroundPressStartColor;
+    private int backgroundPressEndColor;
+    private GradientDrawable.Orientation mOrientation;
     private int cornerRadius;
     private int cornerRadius_TL;
     private int cornerRadius_TR;
@@ -48,7 +48,13 @@ public class RoundViewDelegate {
     private void obtainAttributes(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RoundTextView);
         backgroundColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundColor, Color.TRANSPARENT);
+        backgroundStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundStartColor, Integer.MAX_VALUE);
+        backgroundEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundEndColor, Integer.MAX_VALUE);
         backgroundPressColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressColor, Integer.MAX_VALUE);
+        backgroundPressStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressStartColor, Integer.MAX_VALUE);
+        backgroundPressEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressEndColor, Integer.MAX_VALUE);
+        float gradientAngle = ta.getFloat(R.styleable.RoundTextView_rv_gradient_angle, 0);
+        setGradientAngle((int)gradientAngle);
         cornerRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_cornerRadius, 0);
         strokeWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeWidth, 0);
         strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Color.TRANSPARENT);
@@ -192,8 +198,14 @@ public class RoundViewDelegate {
         return (int) (sp * scale + 0.5f);
     }
 
-    private void setDrawable(GradientDrawable gd, int color, int strokeColor) {
-        gd.setColor(color);
+    private void setDrawable(GradientDrawable gd, int color, int startColor, int endColor, int strokeColor) {
+        if (startColor != Integer.MAX_VALUE && endColor != Integer.MAX_VALUE) {
+            gd.setColors(new int[]{startColor, endColor});
+        } else {
+            gd.setColor(color);
+        }
+
+        gd.setOrientation(mOrientation);
 
         if (cornerRadius_TL > 0 || cornerRadius_TR > 0 || cornerRadius_BR > 0 || cornerRadius_BL > 0) {
             /**The corners are ordered top-left, top-right, bottom-right, bottom-left*/
@@ -217,15 +229,17 @@ public class RoundViewDelegate {
         StateListDrawable bg = new StateListDrawable();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isRippleEnable) {
-            setDrawable(gd_background, backgroundColor, strokeColor);
-            RippleDrawable rippleDrawable = new RippleDrawable(
-                    getPressedColorSelector(backgroundColor, backgroundPressColor), gd_background, null);
+            setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeColor);
+            RippleDrawable rippleDrawable = new RippleDrawable(getPressedColorSelector(backgroundColor, backgroundPressColor), gd_background, null);
             view.setBackground(rippleDrawable);
         } else {
-            setDrawable(gd_background, backgroundColor, strokeColor);
+            setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeColor);
             bg.addState(new int[]{-android.R.attr.state_pressed}, gd_background);
             if (backgroundPressColor != Integer.MAX_VALUE || strokePressColor != Integer.MAX_VALUE) {
-                setDrawable(gd_background_press, backgroundPressColor == Integer.MAX_VALUE ? backgroundColor : backgroundPressColor,
+                setDrawable(gd_background_press,
+                        backgroundPressColor == Integer.MAX_VALUE ? backgroundColor : backgroundPressColor,
+                        backgroundPressStartColor == Integer.MAX_VALUE ? backgroundStartColor : backgroundPressStartColor,
+                        backgroundPressEndColor == Integer.MAX_VALUE ? backgroundEndColor : backgroundPressEndColor,
                         strokePressColor == Integer.MAX_VALUE ? strokeColor : strokePressColor);
                 bg.addState(new int[]{android.R.attr.state_pressed}, gd_background_press);
             }
@@ -266,5 +280,41 @@ public class RoundViewDelegate {
                         normalColor
                 }
         );
+    }
+
+    public void setGradientAngle(int angle) {
+        if(angle < 0 || angle > 360) {
+            angle = 0;
+        }
+
+        angle = angle / 45 * 45;
+        switch (angle) {
+            case 0:
+                mOrientation = GradientDrawable.Orientation.LEFT_RIGHT;
+                break;
+            case 45:
+                mOrientation = GradientDrawable.Orientation.BL_TR;
+                break;
+            case 90:
+                mOrientation = GradientDrawable.Orientation.BOTTOM_TOP;
+                break;
+            case 135:
+                mOrientation = GradientDrawable.Orientation.BR_TL;
+                break;
+            case 180:
+                mOrientation = GradientDrawable.Orientation.RIGHT_LEFT;
+                break;
+            case 225:
+                mOrientation = GradientDrawable.Orientation.TR_BL;
+                break;
+            case 270:
+                mOrientation = GradientDrawable.Orientation.TOP_BOTTOM;
+                break;
+            case 315:
+                mOrientation = GradientDrawable.Orientation.TL_BR;
+                break;
+        }
+
+
     }
 }

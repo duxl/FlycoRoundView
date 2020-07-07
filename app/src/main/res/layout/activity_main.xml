@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:rv="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none">
@@ -27,11 +26,11 @@
                 android:padding="10dp"
                 android:text="TextView Default"
                 android:textColor="#383838"
-                rv:rv_backgroundColor="#ffffff"
-                rv:rv_backgroundPressColor="#383838"
-                rv:rv_strokeColor="#383838"
-                rv:rv_strokeWidth="1dp"
-                rv:rv_textPressColor="#ffffff"/>
+                app:rv_backgroundColor="#ffffff"
+                app:rv_backgroundPressColor="#383838"
+                app:rv_strokeColor="#383838"
+                app:rv_strokeWidth="1dp"
+                app:rv_textPressColor="#ffffff" />
 
             <com.flyco.roundview.RoundTextView
                 android:id="@+id/rtv_2"
@@ -39,20 +38,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:paddingBottom="10dp"
                 android:paddingLeft="18dp"
-                android:paddingRight="18dp"
                 android:paddingTop="10dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="10dp"
                 android:text="Radius Half Height"
                 android:textColor="#03A9F4"
-                rv:rv_backgroundColor="#ffffff"
-                rv:rv_backgroundPressColor="#03A9F4"
-                rv:rv_isRadiusHalfHeight="true"
-                rv:rv_isRippleEnable="false"
-                rv:rv_strokeColor="#03A9F4"
-                rv:rv_strokePressColor="#6D8FB0"
-                rv:rv_strokeWidth="1dp"
-                rv:rv_textPressColor="#ffffff"/>
+                app:rv_backgroundColor="#ffffff"
+                app:rv_backgroundPressColor="#03A9F4"
+                app:rv_isRadiusHalfHeight="true"
+                app:rv_isRippleEnable="false"
+                app:rv_strokeColor="#03A9F4"
+                app:rv_strokePressColor="#6D8FB0"
+                app:rv_strokeWidth="1dp"
+                app:rv_textPressColor="#ffffff" />
         </LinearLayout>
 
 
@@ -63,15 +62,15 @@
             android:layout_marginBottom="10dp"
             android:ellipsize="end"
             android:gravity="center"
-            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-            android:paddingRight="18dp"
             android:paddingTop="10dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="10dp"
             android:singleLine="true"
             android:text="TextView Radius 10dpTextView Radius 10dp"
             android:textColor="#383838"
-            rv:rv_backgroundColor="#F6CE59"
-            rv:rv_cornerRadius="10dp"/>
+            app:rv_backgroundColor="#F6CE59"
+            app:rv_cornerRadius="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,8 +89,8 @@
                 android:padding="10dp"
                 android:text="Radius TopLeft"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#DE88A5"
-                rv:rv_cornerRadius_TL="10dp"/>
+                app:rv_backgroundColor="#DE88A5"
+                app:rv_cornerRadius_TL="10dp" />
 
             <com.flyco.roundview.RoundTextView
                 android:layout_width="0dp"
@@ -102,8 +101,8 @@
                 android:padding="10dp"
                 android:text="Radius TopRight"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#F08A5D"
-                rv:rv_cornerRadius_TR="10dp"/>
+                app:rv_backgroundColor="#F08A5D"
+                app:rv_cornerRadius_TR="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -123,8 +122,8 @@
                 android:padding="10dp"
                 android:text="Radius BottomLeft"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#4AA0D5"
-                rv:rv_cornerRadius_BL="10dp"/>
+                app:rv_backgroundColor="#4AA0D5"
+                app:rv_cornerRadius_BL="10dp" />
 
             <com.flyco.roundview.RoundTextView
                 android:layout_width="0dp"
@@ -135,8 +134,8 @@
                 android:padding="10dp"
                 android:text="Radius BottomRight"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#7A9EAF"
-                rv:rv_cornerRadius_BR="10dp"/>
+                app:rv_backgroundColor="#7A9EAF"
+                app:rv_cornerRadius_BR="10dp" />
         </LinearLayout>
 
         <com.flyco.roundview.RoundFrameLayout
@@ -144,15 +143,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
-            rv:rv_backgroundColor="#009688"
-            rv:rv_cornerRadius="5dp">
+            app:rv_backgroundColor="#009688"
+            app:rv_cornerRadius="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="FrameLayout"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </com.flyco.roundview.RoundFrameLayout>
 
         <com.flyco.roundview.RoundLinearLayout
@@ -161,39 +160,39 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-            android:paddingRight="18dp"
             android:paddingTop="10dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="10dp"
             android:textColor="#ffffff"
-            rv:rv_backgroundColor="#E45171"
-            rv:rv_cornerRadius="5dp">
+            app:rv_backgroundColor="#E45171"
+            app:rv_cornerRadius="5dp">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@mipmap/ic_portrait"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="LinearLayout"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </com.flyco.roundview.RoundLinearLayout>
 
         <com.flyco.roundview.RoundRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
-            android:paddingRight="18dp"
             android:paddingTop="10dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="10dp"
             android:textColor="#ffffff"
-            rv:rv_backgroundColor="#655989"
-            rv:rv_isRadiusHalfHeight="true">
+            app:rv_backgroundColor="#655989"
+            app:rv_isRadiusHalfHeight="true">
 
             <ImageView
                 android:id="@+id/iv_portrait"
@@ -201,7 +200,7 @@
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/ic_portrait"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -210,7 +209,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/iv_portrait"
                 android:text="RelativeLayout"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
         </com.flyco.roundview.RoundRelativeLayout>
 
         <LinearLayout
@@ -226,15 +225,15 @@
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#6D8FB0"
-                rv:rv_cornerRadius="5dp"
-                rv:rv_isWidthHeightEqual="true">
+                app:rv_backgroundColor="#6D8FB0"
+                app:rv_cornerRadius="5dp"
+                app:rv_isWidthHeightEqual="true">
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@mipmap/ic_portrait"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -242,7 +241,7 @@
                     android:layout_marginTop="2dp"
                     android:text="Width=Height"
                     android:textColor="#ffffff"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp" />
             </com.flyco.roundview.RoundLinearLayout>
 
             <com.flyco.roundview.RoundLinearLayout
@@ -253,23 +252,64 @@
                 android:orientation="vertical"
                 android:padding="18dp"
                 android:textColor="#ffffff"
-                rv:rv_backgroundColor="#393E46"
-                rv:rv_isRadiusHalfHeight="true"
-                rv:rv_isWidthHeightEqual="true">
+                app:rv_backgroundColor="#393E46"
+                app:rv_isRadiusHalfHeight="true"
+                app:rv_isWidthHeightEqual="true">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@mipmap/ic_portrait"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="Circle"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff" />
             </com.flyco.roundview.RoundLinearLayout>
         </LinearLayout>
+
+        <com.flyco.roundview.RoundTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="渐变色"
+            android:textColor="#FFF000"
+            app:rv_backgroundEndColor="#FF0000"
+            app:rv_backgroundPressEndColor="#00FF00"
+            app:rv_backgroundPressStartColor="#FF0000"
+            app:rv_backgroundStartColor="#00FF00"
+            app:rv_cornerRadius="15dp"
+            app:rv_gradient_angle="180"
+            app:rv_isRippleEnable="false"
+            app:rv_strokeColor="#000000"
+            app:rv_strokePressColor="#0000FF"
+            app:rv_strokeWidth="3dp"
+            app:rv_textPressColor="#0000FF" />
+
+        <com.flyco.roundview.RoundConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:rv_backgroundColor="#005555"
+            app:rv_cornerRadius="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="RoundConstraintLayout"
+                android:textColor="#FFF"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.flyco.roundview.RoundConstraintLayout>
     </LinearLayout>
 </ScrollView>
