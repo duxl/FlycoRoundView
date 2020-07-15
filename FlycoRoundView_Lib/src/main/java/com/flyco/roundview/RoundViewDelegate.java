@@ -39,8 +39,8 @@ public class RoundViewDelegate {
     private boolean isRippleEnable;
     private float[] radiusArr = new float[8];
 
-    public RoundViewDelegate(View view, Context context, AttributeSet attrs) {
-        this.view = view;
+    public RoundViewDelegate(RoundView view, Context context, AttributeSet attrs) {
+        this.view = (View) view;
         this.context = context;
         obtainAttributes(context, attrs);
     }
@@ -54,7 +54,7 @@ public class RoundViewDelegate {
         backgroundPressStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressStartColor, Integer.MAX_VALUE);
         backgroundPressEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressEndColor, Integer.MAX_VALUE);
         float gradientAngle = ta.getFloat(R.styleable.RoundTextView_rv_gradient_angle, 0);
-        setGradientAngle((int)gradientAngle);
+        setGradientAngle((int) gradientAngle);
         cornerRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_cornerRadius, 0);
         strokeWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeWidth, 0);
         strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Color.TRANSPARENT);
@@ -283,7 +283,7 @@ public class RoundViewDelegate {
     }
 
     public void setGradientAngle(int angle) {
-        if(angle < 0 || angle > 360) {
+        if (angle < 0 || angle > 360) {
             angle = 0;
         }
 
@@ -314,7 +314,21 @@ public class RoundViewDelegate {
                 mOrientation = GradientDrawable.Orientation.TL_BR;
                 break;
         }
+    }
 
+    public int measure(int measureSpec) {
+        if (isWidthHeightEqual() && view.getWidth() > 0 && view.getHeight() > 0) {
+            int max = Math.max(view.getWidth(), view.getHeight());
+            return  View.MeasureSpec.makeMeasureSpec(max, View.MeasureSpec.EXACTLY);
+        }
+        return measureSpec;
+    }
 
+    public void onLayout() {
+        if (isRadiusHalfHeight()) {
+            setCornerRadius(view.getHeight() / 2);
+        } else {
+            setBgSelector();
+        }
     }
 }

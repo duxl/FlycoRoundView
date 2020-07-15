@@ -311,5 +311,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </com.flyco.roundview.RoundConstraintLayout>
+
+        <com.flyco.roundview.RoundEditView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="#FF0000"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:text="这是一个EditView"
+            app:rv_isRadiusHalfHeight="true"
+            app:rv_strokeColor="#FF0000"
+            app:rv_strokeWidth="1dp" />
+
     </LinearLayout>
 </ScrollView>

@@ -8,6 +8,10 @@
 com.flyco.roundview.RoundTextView
 ```
 
+```
+com.flyco.roundview.RoundEditView
+```
+
 ```java
 com.flyco.roundview.RoundLinearLayout
 ```

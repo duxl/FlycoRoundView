@@ -2,20 +2,24 @@ package com.flyco.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 
 /**
- * 用于需要圆角矩形框背景的LinearLayout的情况,减少直接使用LinearLayout时引入的shape资源文件
+ * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
  */
-public class RoundLinearLayout extends LinearLayout implements RoundView {
+public class RoundEditView extends EditText implements RoundView {
     private RoundViewDelegate delegate;
 
-    public RoundLinearLayout(Context context) {
+    public RoundEditView(Context context) {
         this(context, null);
     }
 
-    public RoundLinearLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public RoundEditView(Context context, AttributeSet attrs) {
+        this(context, attrs, android.R.attr.editTextStyle);
+    }
+
+    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
     }
 
