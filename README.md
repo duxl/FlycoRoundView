@@ -38,7 +38,7 @@ com.flyco.roundview.RoundConstraintLayout
 
 ```groovy
 dependencies{
-    compile 'com.github.duxl:FlycoRoundView:v2.0.0'
+    compile 'com.github.duxl:FlycoRoundView:v2.1.0'
 }
 ```
 
