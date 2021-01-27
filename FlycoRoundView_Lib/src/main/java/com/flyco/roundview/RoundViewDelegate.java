@@ -76,8 +76,33 @@ public class RoundViewDelegate {
         setBgSelector();
     }
 
+    public void setBackgroundStartColor(int backgroundStartColor) {
+        this.backgroundStartColor = backgroundStartColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundEndColor(int backgroundEndColor) {
+        this.backgroundEndColor = backgroundEndColor;
+        setBgSelector();
+    }
+
     public void setBackgroundPressColor(int backgroundPressColor) {
         this.backgroundPressColor = backgroundPressColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundPressStartColor(int backgroundPressStartColor) {
+        this.backgroundPressStartColor = backgroundPressStartColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundPressEndColor(int backgroundPressEndColor) {
+        this.backgroundPressEndColor = backgroundPressEndColor;
+        setBgSelector();
+    }
+
+    public void setOrientation(GradientDrawable.Orientation orientation) {
+        this.mOrientation = orientation;
         setBgSelector();
     }
 
@@ -104,6 +129,10 @@ public class RoundViewDelegate {
     public void setTextPressColor(int textPressColor) {
         this.textPressColor = textPressColor;
         setBgSelector();
+    }
+
+    public GradientDrawable.Orientation getOrientation() {
+        return mOrientation;
     }
 
     public void setIsRadiusHalfHeight(boolean isRadiusHalfHeight) {
@@ -140,8 +169,24 @@ public class RoundViewDelegate {
         return backgroundColor;
     }
 
+    public int getBackgroundStartColor() {
+        return backgroundStartColor;
+    }
+
+    public int getBackgroundEndColor() {
+        return backgroundEndColor;
+    }
+
     public int getBackgroundPressColor() {
         return backgroundPressColor;
+    }
+
+    public int getBackgroundPressStartColor() {
+        return backgroundPressStartColor;
+    }
+
+    public int getBackgroundPressEndColor() {
+        return backgroundPressEndColor;
     }
 
     public int getCornerRadius() {
