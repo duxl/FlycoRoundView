@@ -24,6 +24,7 @@ public class RoundConstraintLayout extends ConstraintLayout implements RoundView
     public RoundConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
+
     }
 
     /**
@@ -44,4 +45,11 @@ public class RoundConstraintLayout extends ConstraintLayout implements RoundView
         delegate.onLayout();
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if(delegate != null) {
+            delegate.enabledChange();
+        }
+    }
 }

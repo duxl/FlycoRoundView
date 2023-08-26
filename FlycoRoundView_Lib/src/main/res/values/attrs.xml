@@ -38,6 +38,13 @@
     <!-- 圆角矩形背景按压渐变结束色 -->
     <attr name="rv_backgroundPressEndColor" format="color" />
 
+    <!-- 圆角矩形背景不可用色 -->
+    <attr name="rv_backgroundDisabledColor" format="color" />
+    <!-- 圆角矩形背景不可用渐变开始色 -->
+    <attr name="rv_backgroundDisabledStartColor" format="color" />
+    <!-- 圆角矩形背景不可用渐变结束色 -->
+    <attr name="rv_backgroundDisabledEndColor" format="color" />
+
     <!-- 渐变角度，仅与线性渐变一起使用。必须是45的倍数 范围[0，315] -->
     <attr name="rv_gradient_angle" format="float" />
 
@@ -45,12 +52,17 @@
     <attr name="rv_cornerRadius" format="dimension" />
     <!-- 圆角边框宽度,单位dp-->
     <attr name="rv_strokeWidth" format="dimension" />
+
     <!-- 圆角边框颜色-->
     <attr name="rv_strokeColor" format="color" />
     <!-- 圆角边框按压颜色 -->
     <attr name="rv_strokePressColor" format="color" />
+    <!-- 圆角边框不可用颜色 -->
+    <attr name="rv_strokeDisabledColor" format="color" />
     <!-- 文字按压颜色-->
     <attr name="rv_textPressColor" format="color" />
+    <!-- 文字不可用颜色-->
+    <attr name="rv_textDisabledColor" format="color" />
     <!-- 圆角弧度是高度一半-->
     <attr name="rv_isRadiusHalfHeight" format="boolean" />
     <!-- 圆角矩形宽高相等,取较宽高中大值-->
@@ -73,12 +85,17 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
         <attr name="rv_strokeColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeDisabledColor" />
         <attr name="rv_textPressColor" />
+        <attr name="rv_textDisabledColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />

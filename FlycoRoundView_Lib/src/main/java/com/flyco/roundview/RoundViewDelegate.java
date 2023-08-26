@@ -18,9 +18,13 @@ public class RoundViewDelegate {
     private Context context;
     private GradientDrawable gd_background = new GradientDrawable();
     private GradientDrawable gd_background_press = new GradientDrawable();
+    private GradientDrawable gd_background_disabled = new GradientDrawable();
     private int backgroundColor;
+    private int backgroundDisabledColor;
     private int backgroundStartColor;
     private int backgroundEndColor;
+    private int backgroundDisabledStartColor;
+    private int backgroundDisabledEndColor;
     private int backgroundPressColor;
     private int backgroundPressStartColor;
     private int backgroundPressEndColor;
@@ -32,8 +36,10 @@ public class RoundViewDelegate {
     private int cornerRadius_BR;
     private int strokeWidth;
     private int strokeColor;
+    private int strokeDisabledColor;
     private int strokePressColor;
     private int textPressColor;
+    private int textDisabledColor;
     private boolean isRadiusHalfHeight;
     private boolean isWidthHeightEqual;
     private boolean isRippleEnable;
@@ -48,8 +54,11 @@ public class RoundViewDelegate {
     private void obtainAttributes(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RoundTextView);
         backgroundColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundColor, Color.TRANSPARENT);
+        backgroundDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledColor, Color.TRANSPARENT);
         backgroundStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundStartColor, Integer.MAX_VALUE);
         backgroundEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundEndColor, Integer.MAX_VALUE);
+        backgroundDisabledStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledStartColor, Integer.MAX_VALUE);
+        backgroundDisabledEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledEndColor, Integer.MAX_VALUE);
         backgroundPressColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressColor, Integer.MAX_VALUE);
         backgroundPressStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressStartColor, Integer.MAX_VALUE);
         backgroundPressEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundPressEndColor, Integer.MAX_VALUE);
@@ -58,8 +67,10 @@ public class RoundViewDelegate {
         cornerRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_cornerRadius, 0);
         strokeWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeWidth, 0);
         strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Color.TRANSPARENT);
+        strokeDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_strokeDisabledColor, Color.TRANSPARENT);
         strokePressColor = ta.getColor(R.styleable.RoundTextView_rv_strokePressColor, Integer.MAX_VALUE);
         textPressColor = ta.getColor(R.styleable.RoundTextView_rv_textPressColor, Integer.MAX_VALUE);
+        textDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_textDisabledColor, Integer.MAX_VALUE);
         isRadiusHalfHeight = ta.getBoolean(R.styleable.RoundTextView_rv_isRadiusHalfHeight, false);
         isWidthHeightEqual = ta.getBoolean(R.styleable.RoundTextView_rv_isWidthHeightEqual, false);
         cornerRadius_TL = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_cornerRadius_TL, 0);
@@ -71,8 +82,17 @@ public class RoundViewDelegate {
         ta.recycle();
     }
 
+    public void enabledChange() {
+        setBgSelector();
+    }
+
     public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundDisabledColor(int backgroundDisabledColor) {
+        this.backgroundDisabledColor = backgroundDisabledColor;
         setBgSelector();
     }
 
@@ -83,6 +103,16 @@ public class RoundViewDelegate {
 
     public void setBackgroundEndColor(int backgroundEndColor) {
         this.backgroundEndColor = backgroundEndColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundDisabledStartColor(int backgroundDisabledStartColor) {
+        this.backgroundDisabledStartColor = backgroundDisabledStartColor;
+        setBgSelector();
+    }
+
+    public void setBackgroundDisabledEndColor(int backgroundDisabledEndColor) {
+        this.backgroundDisabledEndColor = backgroundDisabledEndColor;
         setBgSelector();
     }
 
@@ -121,6 +151,11 @@ public class RoundViewDelegate {
         setBgSelector();
     }
 
+    public void setStrokeDisabledColor(int strokeDisabledColor) {
+        this.strokeDisabledColor = strokeDisabledColor;
+        setBgSelector();
+    }
+
     public void setStrokePressColor(int strokePressColor) {
         this.strokePressColor = strokePressColor;
         setBgSelector();
@@ -128,6 +163,11 @@ public class RoundViewDelegate {
 
     public void setTextPressColor(int textPressColor) {
         this.textPressColor = textPressColor;
+        setBgSelector();
+    }
+
+    public void setTextDisabledColor(int textDisabledColor) {
+        this.textDisabledColor = textDisabledColor;
         setBgSelector();
     }
 
@@ -169,12 +209,24 @@ public class RoundViewDelegate {
         return backgroundColor;
     }
 
+    public int getBackgroundDisabledColor() {
+        return backgroundDisabledColor;
+    }
+
     public int getBackgroundStartColor() {
         return backgroundStartColor;
     }
 
+    public int getBackgroundDisabledStartColor() {
+        return backgroundDisabledStartColor;
+    }
+
     public int getBackgroundEndColor() {
         return backgroundEndColor;
+    }
+
+    public int getBackgroundDisabledEndColor() {
+        return backgroundDisabledEndColor;
     }
 
     public int getBackgroundPressColor() {
@@ -201,12 +253,20 @@ public class RoundViewDelegate {
         return strokeColor;
     }
 
+    public int getStrokeDisabledColor() {
+        return strokeDisabledColor;
+    }
+
     public int getStrokePressColor() {
         return strokePressColor;
     }
 
     public int getTextPressColor() {
         return textPressColor;
+    }
+
+    public int getTextDisabledColor() {
+        return textDisabledColor;
     }
 
     public boolean isRadiusHalfHeight() {
@@ -273,13 +333,14 @@ public class RoundViewDelegate {
     public void setBgSelector() {
         StateListDrawable bg = new StateListDrawable();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isRippleEnable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isRippleEnable && view.isEnabled()) {
             setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeColor);
             RippleDrawable rippleDrawable = new RippleDrawable(getPressedColorSelector(backgroundColor, backgroundPressColor), gd_background, null);
             view.setBackground(rippleDrawable);
+            System.out.println("--set111111111");
         } else {
-            setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeColor);
-            bg.addState(new int[]{-android.R.attr.state_pressed}, gd_background);
+            System.out.println("--set22222222" + view.isEnabled());
+            // 设置按压状态背景色
             if (backgroundPressColor != Integer.MAX_VALUE || strokePressColor != Integer.MAX_VALUE) {
                 setDrawable(gd_background_press,
                         backgroundPressColor == Integer.MAX_VALUE ? backgroundColor : backgroundPressColor,
@@ -288,6 +349,19 @@ public class RoundViewDelegate {
                         strokePressColor == Integer.MAX_VALUE ? strokeColor : strokePressColor);
                 bg.addState(new int[]{android.R.attr.state_pressed}, gd_background_press);
             }
+            // 设置不可用状态背景色
+            if (backgroundDisabledColor != Integer.MAX_VALUE || strokeDisabledColor != Integer.MAX_VALUE) {
+                setDrawable(gd_background_disabled,
+                        backgroundDisabledColor == Integer.MAX_VALUE ? backgroundColor : backgroundDisabledColor,
+                        backgroundDisabledStartColor == Integer.MAX_VALUE ? backgroundStartColor : backgroundDisabledStartColor,
+                        backgroundDisabledEndColor == Integer.MAX_VALUE ? backgroundEndColor : backgroundDisabledEndColor,
+                        strokeDisabledColor == Integer.MAX_VALUE ? strokeColor : strokeDisabledColor);
+                bg.addState(new int[]{-android.R.attr.state_enabled}, gd_background_disabled);
+            }
+
+            // 设置默认状态背景色
+            setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeColor);
+            bg.addState(new int[]{-android.R.attr.state_pressed}, gd_background);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {//16
                 view.setBackground(bg);
@@ -298,14 +372,20 @@ public class RoundViewDelegate {
         }
 
         if (view instanceof TextView) {
-            if (textPressColor != Integer.MAX_VALUE) {
-                ColorStateList textColors = ((TextView) view).getTextColors();
+            ColorStateList textColors = ((TextView) view).getTextColors();
 //              Log.d("AAA", textColors.getColorForState(new int[]{-android.R.attr.state_pressed}, -1) + "");
-                ColorStateList colorStateList = new ColorStateList(
-                        new int[][]{new int[]{-android.R.attr.state_pressed}, new int[]{android.R.attr.state_pressed}},
-                        new int[]{textColors.getDefaultColor(), textPressColor});
-                ((TextView) view).setTextColor(colorStateList);
-            }
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][]{
+                            new int[]{android.R.attr.state_pressed},
+                            new int[]{-android.R.attr.state_enabled},
+                            new int[]{}
+                    },
+                    new int[]{
+                            textPressColor != Integer.MAX_VALUE ? textPressColor : textColors.getDefaultColor(),
+                            textDisabledColor != Integer.MAX_VALUE ? textDisabledColor : textColors.getDefaultColor(),
+                            textColors.getDefaultColor()
+                    });
+            ((TextView) view).setTextColor(colorStateList);
         }
     }
 
@@ -364,7 +444,7 @@ public class RoundViewDelegate {
     public int measure(int measureSpec) {
         if (isWidthHeightEqual() && view.getWidth() > 0 && view.getHeight() > 0) {
             int max = Math.max(view.getWidth(), view.getHeight());
-            return  View.MeasureSpec.makeMeasureSpec(max, View.MeasureSpec.EXACTLY);
+            return View.MeasureSpec.makeMeasureSpec(max, View.MeasureSpec.EXACTLY);
         }
         return measureSpec;
     }

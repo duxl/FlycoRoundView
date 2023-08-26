@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="testTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <!-- 默认状态背景和文字颜色 -->
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="rv_backgroundColor">#00FF00</item>
+
+        <!-- 按压状态背景和文字颜色 -->
+        <item name="rv_textPressColor">#0000FF</item>
+        <item name="rv_backgroundPressColor">#FFF000</item>
+
+        <!-- 不可用状态背景和文字颜色 -->
+        <item name="rv_textDisabledColor">#999999</item>
+        <item name="rv_backgroundDisabledColor">#CCCCCC</item>
+
+        <item name="rv_isRippleEnable">false</item>
+    </style>
+
 </resources>

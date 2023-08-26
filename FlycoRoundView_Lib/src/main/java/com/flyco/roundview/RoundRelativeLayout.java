@@ -39,4 +39,12 @@ public class RoundRelativeLayout extends RelativeLayout implements RoundView {
         super.onLayout(changed, left, top, right, bottom);
         delegate.onLayout();
     }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if(delegate != null) {
+            delegate.enabledChange();
+        }
+    }
 }

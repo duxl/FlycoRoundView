@@ -2,30 +2,31 @@ package com.flyco.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.EditText;
+import android.view.View;
+
 
 /**
- * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
+ * 用于需要圆角矩形框背景的EmptyRoundView的情况,减少直接使用View时引入的shape资源文件
+ * create by duxl 2023/2/25
  */
-public class RoundEditView extends EditText implements RoundView {
+public class RoundEmptyView extends View implements RoundView {
+
     private RoundViewDelegate delegate;
 
-    public RoundEditView(Context context) {
+    public RoundEmptyView(Context context) {
         this(context, null);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.editTextStyle);
+    public RoundEmptyView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundEmptyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
     }
 
-    /**
-     * use delegate to set attr
-     */
+    @Override
     public RoundViewDelegate getDelegate() {
         return delegate;
     }

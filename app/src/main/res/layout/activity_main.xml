@@ -316,13 +316,99 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textColor="#FF0000"
             android:padding="10dp"
-            android:textSize="14sp"
             android:text="这是一个EditView"
+            android:textColor="#FF0000"
+            android:textSize="14sp"
             app:rv_isRadiusHalfHeight="true"
             app:rv_strokeColor="#FF0000"
             app:rv_strokeWidth="1dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RoundEmptyView" />
+
+        <com.flyco.roundview.RoundEmptyView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:rv_backgroundColor="#FF0000"
+            app:rv_isRadiusHalfHeight="true"
+            app:rv_strokeWidth="1dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RoundRecyclerView" />
+
+        <com.flyco.roundview.RoundRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:rv_backgroundColor="#0000FF"
+            app:rv_isRadiusHalfHeight="true"
+            app:rv_strokeWidth="1dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RoundNestedScrollView" />
+
+        <com.flyco.roundview.RoundNestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:rv_backgroundColor="#00FF00"
+            app:rv_isRadiusHalfHeight="true"
+            app:rv_strokeWidth="1dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RoundRadioGroup" />
+
+        <com.flyco.roundview.RoundRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:rv_backgroundColor="#00CC00"
+            app:rv_isRadiusHalfHeight="true"
+            app:rv_strokeWidth="1dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="RoundRadioGroup" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.flyco.roundview.RoundTextView
+                    style="@style/testTextStyle"
+                    android:enabled="true"
+                    android:text="enabled" />
+
+                <com.flyco.roundview.RoundTextView
+                    style="@style/testTextStyle"
+                    android:layout_marginLeft="10dp"
+                    android:enabled="false"
+                    android:text="enabled" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     </LinearLayout>
 </ScrollView>

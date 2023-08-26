@@ -2,26 +2,27 @@ package com.flyco.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.EditText;
+import android.widget.RadioGroup;
+
+import androidx.core.widget.NestedScrollView;
 
 /**
- * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
+ * 用于需要圆角矩形框背景的RoundRadioGroup的情况,减少直接使用RadioGroup时引入的shape资源文件
+ * create by duxl 2023/2/25
  */
-public class RoundEditView extends EditText implements RoundView {
+public class RoundRadioGroup extends RadioGroup implements RoundView {
+
     private RoundViewDelegate delegate;
 
-    public RoundEditView(Context context) {
+    public RoundRadioGroup(Context context) {
         this(context, null);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.editTextStyle);
-    }
-
-    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public RoundRadioGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
         delegate = new RoundViewDelegate(this, context, attrs);
     }
+
 
     /**
      * use delegate to set attr
