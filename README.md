@@ -44,6 +44,18 @@ com.flyco.roundview.RoundRadioGroup
 com.flyco.roundview.RoundNestedScrollView
 ```
 
+```java
+com.flyco.roundview.RoundCoordinatorLayout
+```
+
+```java
+com.flyco.roundview.RoundAppBarLayout
+```
+
+```java
+com.flyco.roundview.RoundCollapsingToolbarLayout
+```
+
 
 
 ### Demo

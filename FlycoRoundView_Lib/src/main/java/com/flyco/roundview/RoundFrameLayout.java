@@ -40,7 +40,7 @@ public class RoundFrameLayout extends FrameLayout implements RoundView {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.enabledChange();
         }
     }

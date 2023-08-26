@@ -3,23 +3,26 @@ package com.flyco.roundview;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 /**
- * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
+ * 用于需要圆角矩形框背景的RoundCoordinatorLayout的情况,减少直接使用RoundCoordinatorLayout时引入的shape资源文件
  */
-public class RoundEditView extends AppCompatEditText implements RoundView {
+public class RoundCoordinatorLayout extends CoordinatorLayout implements RoundView {
     private RoundViewDelegate delegate;
 
-    public RoundEditView(Context context) {
+    public RoundCoordinatorLayout(Context context) {
         this(context, null);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.editTextStyle);
+    public RoundCoordinatorLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, com.google.android.material.R.attr.coordinatorLayoutStyle);
+
     }
 
-    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundCoordinatorLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
     }
@@ -45,7 +48,7 @@ public class RoundEditView extends AppCompatEditText implements RoundView {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.enabledChange();
         }
     }

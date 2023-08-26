@@ -2,12 +2,13 @@ package com.flyco.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 /**
  * 用于需要圆角矩形框背景的LinearLayout的情况,减少直接使用LinearLayout时引入的shape资源文件
  */
-public class RoundLinearLayout extends LinearLayout implements RoundView {
+public class RoundLinearLayout extends LinearLayoutCompat implements RoundView {
     private RoundViewDelegate delegate;
 
     public RoundLinearLayout(Context context) {

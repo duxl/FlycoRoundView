@@ -3,23 +3,26 @@ package com.flyco.roundview;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 /**
- * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
+ * 用于需要圆角矩形框背景的RoundCollapsingToolbarLayout的情况,减少直接使用CollapsingToolbarLayout时引入的shape资源文件
  */
-public class RoundEditView extends AppCompatEditText implements RoundView {
+public class RoundCollapsingToolbarLayout extends CollapsingToolbarLayout implements RoundView {
     private RoundViewDelegate delegate;
 
-    public RoundEditView(Context context) {
+    public RoundCollapsingToolbarLayout(Context context) {
         this(context, null);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.editTextStyle);
+    public RoundCollapsingToolbarLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, com.google.android.material.R.attr.collapsingToolbarLayoutStyle);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundCollapsingToolbarLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
     }

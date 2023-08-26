@@ -3,23 +3,25 @@ package com.flyco.roundview;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
- * 用于需要圆角矩形框背景的EditText的情况,减少直接使用EditText时引入的shape资源文件
+ * 用于需要圆角矩形框背景的RoundImageView的情况,减少直接使用ImageView时引入的shape资源文件
  */
-public class RoundEditView extends AppCompatEditText implements RoundView {
+public class RoundImageView extends AppCompatImageView implements RoundView {
     private RoundViewDelegate delegate;
 
-    public RoundEditView(Context context) {
+    public RoundImageView(Context context) {
         this(context, null);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.editTextStyle);
+    public RoundImageView(Context context, AttributeSet attrs) {
+        this(context, attrs, com.google.android.material.R.attr.appBarLayoutStyle);
     }
 
-    public RoundEditView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundImageView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         delegate = new RoundViewDelegate(this, context, attrs);
     }

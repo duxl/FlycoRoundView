@@ -2,12 +2,13 @@ package com.flyco.roundview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 用于需要圆角矩形框背景的TextView的情况,减少直接使用TextView时引入的shape资源文件
  */
-public class RoundTextView extends TextView implements RoundView {
+public class RoundTextView extends AppCompatTextView implements RoundView {
     private RoundViewDelegate delegate;
 
     public RoundTextView(Context context) {
