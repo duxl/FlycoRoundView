@@ -49,4 +49,12 @@ public class RoundTextView extends AppCompatTextView implements RoundView {
             delegate.enabledChange();
         }
     }
+
+    @Override
+    public void setSelected(boolean selected) {
+        super.setSelected(selected);
+        if(delegate != null) {
+            delegate.selectedChange();
+        }
+    }
 }

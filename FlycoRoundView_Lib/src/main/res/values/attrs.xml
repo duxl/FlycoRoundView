@@ -45,28 +45,18 @@
     <!-- 圆角矩形背景不可用渐变结束色 -->
     <attr name="rv_backgroundDisabledEndColor" format="color" />
 
+    <!-- 圆角矩形背景选中色 -->
+    <attr name="rv_backgroundSelectedColor" format="color" />
+    <!-- 圆角矩形背景选中渐变开始色 -->
+    <attr name="rv_backgroundSelectedStartColor" format="color" />
+    <!-- 圆角矩形背景选中渐变结束色 -->
+    <attr name="rv_backgroundSelectedEndColor" format="color" />
+
     <!-- 渐变角度，仅与线性渐变一起使用。必须是45的倍数 范围[0，315] -->
     <attr name="rv_gradient_angle" format="float" />
 
     <!-- 圆角弧度,单位dp-->
     <attr name="rv_cornerRadius" format="dimension" />
-    <!-- 圆角边框宽度,单位dp-->
-    <attr name="rv_strokeWidth" format="dimension" />
-
-    <!-- 圆角边框颜色-->
-    <attr name="rv_strokeColor" format="color" />
-    <!-- 圆角边框按压颜色 -->
-    <attr name="rv_strokePressColor" format="color" />
-    <!-- 圆角边框不可用颜色 -->
-    <attr name="rv_strokeDisabledColor" format="color" />
-    <!-- 文字按压颜色-->
-    <attr name="rv_textPressColor" format="color" />
-    <!-- 文字不可用颜色-->
-    <attr name="rv_textDisabledColor" format="color" />
-    <!-- 圆角弧度是高度一半-->
-    <attr name="rv_isRadiusHalfHeight" format="boolean" />
-    <!-- 圆角矩形宽高相等,取较宽高中大值-->
-    <attr name="rv_isWidthHeightEqual" format="boolean" />
     <!-- 圆角弧度,单位dp,TopLeft-->
     <attr name="rv_cornerRadius_TL" format="dimension" />
     <!-- 圆角弧度,单位dp,TopRight-->
@@ -75,6 +65,32 @@
     <attr name="rv_cornerRadius_BL" format="dimension" />
     <!-- 圆角弧度,单位dp,BottomRight-->
     <attr name="rv_cornerRadius_BR" format="dimension" />
+
+    <!-- 圆角边框宽度,单位dp-->
+    <attr name="rv_strokeWidth" format="dimension" />
+    <attr name="rv_strokePressWidth" format="dimension" />
+    <attr name="rv_strokeDisabledWidth" format="dimension" />
+    <attr name="rv_strokeSelectedWidth" format="dimension" />
+    <!-- 圆角边框颜色-->
+    <attr name="rv_strokeColor" format="color" />
+    <!-- 圆角边框按压颜色 -->
+    <attr name="rv_strokePressColor" format="color" />
+    <!-- 圆角边框不可用颜色 -->
+    <attr name="rv_strokeDisabledColor" format="color" />
+    <!-- 圆角边框选中颜色 -->
+    <attr name="rv_strokeSelectedColor" format="color" />
+
+    <!-- 文字按压颜色-->
+    <attr name="rv_textPressColor" format="color" />
+    <!-- 文字不可用颜色-->
+    <attr name="rv_textDisabledColor" format="color" />
+    <!-- 文字选中颜色-->
+    <attr name="rv_textSelectedColor" format="color" />
+
+    <!-- 圆角弧度是高度一半-->
+    <attr name="rv_isRadiusHalfHeight" format="boolean" />
+    <!-- 圆角矩形宽高相等,取较宽高中大值-->
+    <attr name="rv_isWidthHeightEqual" format="boolean" />
     <!-- 是否有Ripple效果,api21+有效-->
     <attr name="rv_isRippleEnable" format="boolean" />
 
@@ -88,14 +104,22 @@
         <attr name="rv_backgroundDisabledColor" />
         <attr name="rv_backgroundDisabledStartColor" />
         <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
         <attr name="rv_strokePressColor" />
         <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_textPressColor" />
         <attr name="rv_textDisabledColor" />
+        <attr name="rv_textSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
@@ -112,12 +136,25 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_textDisabledColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_textPressColor" />
+        <attr name="rv_textSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
@@ -134,11 +171,22 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
@@ -155,11 +203,22 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
@@ -176,11 +235,22 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
@@ -197,11 +267,278 @@
         <attr name="rv_backgroundPressColor" />
         <attr name="rv_backgroundPressStartColor" />
         <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
         <attr name="rv_gradient_angle" />
         <attr name="rv_cornerRadius" />
         <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
         <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
         <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundAppBarLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundCollapsingToolbarLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundCoordinatorLayout">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundEmptyView">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundNestedScrollView">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRadioGroup">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
+        <attr name="rv_isRadiusHalfHeight" />
+        <attr name="rv_isWidthHeightEqual" />
+        <attr name="rv_cornerRadius_TL" />
+        <attr name="rv_cornerRadius_TR" />
+        <attr name="rv_cornerRadius_BL" />
+        <attr name="rv_cornerRadius_BR" />
+        <attr name="rv_isRippleEnable" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRecyclerView">
+        <attr name="rv_backgroundColor" />
+        <attr name="rv_backgroundStartColor" />
+        <attr name="rv_backgroundEndColor" />
+        <attr name="rv_backgroundPressColor" />
+        <attr name="rv_backgroundPressStartColor" />
+        <attr name="rv_backgroundPressEndColor" />
+        <attr name="rv_backgroundDisabledColor" />
+        <attr name="rv_backgroundDisabledStartColor" />
+        <attr name="rv_backgroundDisabledEndColor" />
+        <attr name="rv_backgroundSelectedColor" />
+        <attr name="rv_backgroundSelectedStartColor" />
+        <attr name="rv_backgroundSelectedEndColor" />
+        <attr name="rv_gradient_angle" />
+        <attr name="rv_cornerRadius" />
+        <attr name="rv_strokeWidth" />
+        <attr name="rv_strokePressWidth" />
+        <attr name="rv_strokeDisabledWidth" />
+        <attr name="rv_strokeSelectedWidth" />
+        <attr name="rv_strokeColor" />
+        <attr name="rv_strokeDisabledColor" />
+        <attr name="rv_strokePressColor" />
+        <attr name="rv_strokeSelectedColor" />
         <attr name="rv_isRadiusHalfHeight" />
         <attr name="rv_isWidthHeightEqual" />
         <attr name="rv_cornerRadius_TL" />
