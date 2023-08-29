@@ -53,5 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) v).setText("是否选中---" + v.isSelected());
             }
         });
+
+        findViewById(R.id.iv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setSelected(!v.isSelected());
+            }
+        });
     }
 }

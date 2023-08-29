@@ -446,7 +446,7 @@ public class RoundViewDelegate {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isRippleEnable && view.isEnabled()) {
             setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeWidth, strokeColor);
             GradientDrawable background = gd_background;
-            if (view.isSelected()) {
+            if (view.isSelected() && (backgroundSelectedColor != Integer.MAX_VALUE || strokeSelectedColor != Integer.MAX_VALUE)) {
                 setDrawable(gd_background_selected, backgroundSelectedColor, backgroundSelectedStartColor, backgroundSelectedEndColor, strokeSelectedWidth, strokeSelectedColor);
                 background = gd_background_selected;
             }
