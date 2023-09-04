@@ -48,7 +48,7 @@ public class RoundConstraintLayout extends ConstraintLayout implements RoundView
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.enabledChange();
         }
     }
@@ -56,7 +56,7 @@ public class RoundConstraintLayout extends ConstraintLayout implements RoundView
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.selectedChange();
         }
     }

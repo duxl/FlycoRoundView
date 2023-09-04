@@ -16,7 +16,7 @@ public class RoundTextView extends AppCompatTextView implements RoundView {
     }
 
     public RoundTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, android.R.attr.textViewStyle);
     }
 
     public RoundTextView(Context context, AttributeSet attrs, int defStyleAttr) {

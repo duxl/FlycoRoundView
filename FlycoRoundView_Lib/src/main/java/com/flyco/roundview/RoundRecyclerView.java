@@ -18,7 +18,7 @@ public class RoundRecyclerView extends RecyclerView implements RoundView {
     }
 
     public RoundRecyclerView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, androidx.recyclerview.R.attr.recyclerViewStyle);
     }
 
     public RoundRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -47,7 +47,7 @@ public class RoundRecyclerView extends RecyclerView implements RoundView {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.enabledChange();
         }
     }
@@ -55,7 +55,7 @@ public class RoundRecyclerView extends RecyclerView implements RoundView {
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.selectedChange();
         }
     }

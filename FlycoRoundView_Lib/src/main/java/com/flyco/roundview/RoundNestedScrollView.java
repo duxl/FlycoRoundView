@@ -18,7 +18,7 @@ public class RoundNestedScrollView extends NestedScrollView implements RoundView
     }
 
     public RoundNestedScrollView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        this(context, attrs, androidx.core.R.attr.nestedScrollViewStyle);
     }
 
     public RoundNestedScrollView(Context context, AttributeSet attrs, int defStyleAttr) {

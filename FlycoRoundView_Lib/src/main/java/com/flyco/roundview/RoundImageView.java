@@ -18,7 +18,7 @@ public class RoundImageView extends AppCompatImageView implements RoundView {
     }
 
     public RoundImageView(Context context, AttributeSet attrs) {
-        this(context, attrs, com.google.android.material.R.attr.appBarLayoutStyle);
+        this(context, attrs, 0);
     }
 
     public RoundImageView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
