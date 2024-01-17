@@ -404,11 +404,17 @@ public class RoundViewDelegate {
     }
 
     protected int dp2px(float dp) {
+        if (dp == 0) {
+            return 0;
+        }
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
     }
 
     protected int sp2px(float sp) {
+        if (sp == 0) {
+            return 0;
+        }
         final float scale = this.context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (sp * scale + 0.5f);
     }
