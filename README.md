@@ -66,7 +66,7 @@ com.flyco.roundview.RoundCollapsingToolbarLayout
 
 ```groovy
 dependencies{
-    compile 'com.github.duxl:FlycoRoundView:v3.0.0'
+    compile 'com.github.duxl:FlycoRoundView:v4.0.0'
 }
 ```
 
@@ -98,6 +98,9 @@ dependencies{
 | rv_cornerRadius_BL             | dimension | 圆角弧度,单位dp,BottomLeft                                 |
 | rv_cornerRadius_BR             | dimension | 圆角弧度,单位dp,BottomRight                                |
 | rv_isRippleEnable              | boolean   | 是否有Ripple效果,api21+有效                                |
-
+| rv_shadowDx                    | dimension | 阴影-水平x偏移                                             |                            
+| rv_shadowDx                    | dimension | 阴影-水平y偏移                                             |
+| rv_shadowRadius                | dimension | 阴影-半径                                                 |
+| rv_shadowColor                 | color     | 阴影-颜色                                                 |
 
 
