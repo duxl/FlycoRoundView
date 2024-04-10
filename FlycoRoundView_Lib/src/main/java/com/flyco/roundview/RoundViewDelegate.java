@@ -4,7 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
@@ -66,6 +71,13 @@ public class RoundViewDelegate {
     private boolean isRippleEnable;
     private float[] radiusArr = new float[8];
 
+    // 阴影
+    private Paint shadowPaint;
+    private float shadowDx; // 水平偏移量
+    private float shadowDy; // 垂直偏移量
+    private float shadowRadius; // 阴影半径
+    private int shadowColor; // 阴影颜色
+
     public RoundViewDelegate(RoundView view, Context context, AttributeSet attrs) {
         this.view = (View) view;
         this.context = context;
@@ -120,6 +132,12 @@ public class RoundViewDelegate {
         isRadiusHalfHeight = ta.getBoolean(R.styleable.RoundTextView_rv_isRadiusHalfHeight, false);
         isWidthHeightEqual = ta.getBoolean(R.styleable.RoundTextView_rv_isWidthHeightEqual, false);
         isRippleEnable = ta.getBoolean(R.styleable.RoundTextView_rv_isRippleEnable, true);
+
+        // 阴影
+        shadowDx = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_shadowDx, 0); // 水平偏移量
+        shadowDy = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_shadowDy, 0); // 垂直偏移量
+        shadowRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_shadowRadius, 0); // 阴影半径
+        shadowColor = ta.getColor(R.styleable.RoundTextView_rv_shadowColor, Color.TRANSPARENT); // 阴影颜色
 
         ta.recycle();
     }
@@ -403,6 +421,30 @@ public class RoundViewDelegate {
         return textSelectedColor;
     }
 
+    public void setShadow(float radius, float dx, float dy, int color) {
+        this.shadowRadius = radius;
+        this.shadowDx = dx;
+        this.shadowDy = dy;
+        this.shadowColor = color;
+        view.invalidate();
+    }
+
+    public float getShadowDx() {
+        return shadowDx;
+    }
+
+    public float getShadowDy() {
+        return shadowDy;
+    }
+
+    public float getShadowRadius() {
+        return shadowRadius;
+    }
+
+    public int getShadowColor() {
+        return shadowColor;
+    }
+
     protected int dp2px(float dp) {
         if (dp == 0) {
             return 0;
@@ -592,5 +634,51 @@ public class RoundViewDelegate {
         } else {
             setBgSelector();
         }
+    }
+
+    public void drawShadow(Canvas canvas) {
+        if (shadowDx == 0 && shadowDy == 0) {
+            return;
+        }
+        Path shadowPath = new Path();
+        int width = view.getWidth();
+        int height = view.getHeight();
+        if (cornerRadius_TL > 0 || cornerRadius_TR > 0 || cornerRadius_BR > 0 || cornerRadius_BL > 0) {
+            shadowPath.moveTo(cornerRadius_TL, 0);
+            shadowPath.lineTo(width - cornerRadius_TR, 0);
+            shadowPath.arcTo(width - cornerRadius_TR * 2, 0, width, cornerRadius_TR * 2, 270, 90, false);
+            shadowPath.lineTo(width, height - cornerRadius_BR);
+            shadowPath.arcTo(width - cornerRadius_BR * 2, height - cornerRadius_BR * 2, width, height, 0, 90, false);
+            shadowPath.lineTo(cornerRadius_BL, height);
+            shadowPath.arcTo(0, height - cornerRadius_BL * 2, cornerRadius_BL * 2, height, 90, 90, false);
+            shadowPath.lineTo(0, cornerRadius_TL);
+            shadowPath.arcTo(0, 0, cornerRadius_TL * 2, cornerRadius_TL * 2, 180, 90, false);
+            shadowPath.close();
+
+            radiusArr[0] = cornerRadius_TL;
+            radiusArr[1] = cornerRadius_TL;
+            radiusArr[2] = cornerRadius_TR;
+            radiusArr[3] = cornerRadius_TR;
+            radiusArr[4] = cornerRadius_BR;
+            radiusArr[5] = cornerRadius_BR;
+            radiusArr[6] = cornerRadius_BL;
+            radiusArr[7] = cornerRadius_BL;
+        } else {
+            RectF rect = new RectF(0, 0, width, height);
+            shadowPath.addRoundRect(rect, cornerRadius, cornerRadius, Path.Direction.CCW);
+        }
+
+        if (shadowPaint == null) {
+            shadowPaint = new Paint();
+            shadowPaint.setAntiAlias(true);
+            shadowPaint.setStyle(Paint.Style.FILL);
+        }
+
+        canvas.save();
+        canvas.clipOutPath(shadowPath);
+        shadowPaint.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor);
+        canvas.drawPath(shadowPath, shadowPaint);
+
+        canvas.restore();
     }
 }

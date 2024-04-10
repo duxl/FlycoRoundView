@@ -1,6 +1,7 @@
 package com.flyco.roundview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -45,7 +46,7 @@ public class RoundTextView extends AppCompatTextView implements RoundView {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.enabledChange();
         }
     }
@@ -53,8 +54,16 @@ public class RoundTextView extends AppCompatTextView implements RoundView {
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(delegate != null) {
+        if (delegate != null) {
             delegate.selectedChange();
         }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if (delegate != null) {
+            delegate.drawShadow(canvas);
+        }
+        super.draw(canvas);
     }
 }

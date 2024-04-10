@@ -1,7 +1,8 @@
 package com.flyco.roundview;
 
+import android.graphics.Canvas;
+
 /**
- * TODO desc
  * create by duxl 2020/7/15
  */
 public interface RoundView {
@@ -11,4 +12,6 @@ public interface RoundView {
     void onMeasure(int widthMeasureSpec, int heightMeasureSpec);
 
     void onLayout(boolean changed, int left, int top, int right, int bottom);
+
+    default void drawShadow(Canvas canvas) {}
 }

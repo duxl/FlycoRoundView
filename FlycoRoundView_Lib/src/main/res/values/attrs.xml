@@ -94,6 +94,15 @@
     <!-- 是否有Ripple效果,api21+有效-->
     <attr name="rv_isRippleEnable" format="boolean" />
 
+    <!-- 阴影-水平x偏移量 -->
+    <attr name="rv_shadowDx" format="dimension" />
+    <!-- 阴影-垂直y偏移量 -->
+    <attr name="rv_shadowDy" format="dimension" />
+    <!-- 阴影-半径 -->
+    <attr name="rv_shadowRadius" format="dimension" />
+    <!-- 阴影-颜色 -->
+    <attr name="rv_shadowColor" format="color" />
+
     <declare-styleable name="RoundTextView">
         <attr name="rv_backgroundColor" />
         <attr name="rv_backgroundStartColor" />
@@ -127,6 +136,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundEditView">
@@ -162,6 +175,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundLinearLayout">
@@ -194,6 +211,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundRelativeLayout">
@@ -226,6 +247,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundFrameLayout">
@@ -258,6 +283,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundConstraintLayout">
@@ -290,6 +319,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundAppBarLayout">
@@ -322,6 +355,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundCollapsingToolbarLayout">
@@ -354,6 +391,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundCoordinatorLayout">
@@ -386,6 +427,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundEmptyView">
@@ -418,6 +463,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundImageView">
@@ -450,6 +499,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundNestedScrollView">
@@ -482,6 +535,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundRadioGroup">
@@ -514,6 +571,10 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 
     <declare-styleable name="RoundRecyclerView">
@@ -546,5 +607,9 @@
         <attr name="rv_cornerRadius_BL" />
         <attr name="rv_cornerRadius_BR" />
         <attr name="rv_isRippleEnable" />
+        <attr name="rv_shadowDx" />
+        <attr name="rv_shadowDy" />
+        <attr name="rv_shadowRadius" />
+        <attr name="rv_shadowColor" />
     </declare-styleable>
 </resources>
