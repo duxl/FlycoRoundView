@@ -55,4 +55,12 @@ public class RoundRelativeLayout extends RelativeLayout implements RoundView {
             delegate.selectedChange();
         }
     }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if(delegate != null) {
+            delegate.drawShadow(canvas);
+        }
+        super.draw(canvas);
+    }
 }

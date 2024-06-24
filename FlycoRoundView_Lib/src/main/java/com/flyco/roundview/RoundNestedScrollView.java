@@ -1,6 +1,7 @@
 package com.flyco.roundview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 import androidx.core.widget.NestedScrollView;
@@ -58,6 +59,14 @@ public class RoundNestedScrollView extends NestedScrollView implements RoundView
         if(delegate != null) {
             delegate.selectedChange();
         }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if(delegate != null) {
+            delegate.drawShadow(canvas);
+        }
+        super.draw(canvas);
     }
 
 }
