@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -78,20 +77,23 @@ public class RoundViewDelegate {
     private float shadowRadius; // 阴影半径
     private int shadowColor; // 阴影颜色
 
+    private boolean isSelected;
+
     public RoundViewDelegate(RoundView view, Context context, AttributeSet attrs) {
         this.view = (View) view;
         this.context = context;
         obtainAttributes(context, attrs);
+        this.view.setSelected(isSelected);
     }
 
     private void obtainAttributes(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RoundTextView);
         // 默认状态背景
-        backgroundColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundColor, Color.TRANSPARENT);
+        backgroundColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundColor, Integer.MAX_VALUE);
         backgroundStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundStartColor, Integer.MAX_VALUE);
         backgroundEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundEndColor, Integer.MAX_VALUE);
         // 不可用状态背景
-        backgroundDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledColor, Color.TRANSPARENT);
+        backgroundDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledColor, Integer.MAX_VALUE);
         backgroundDisabledStartColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledStartColor, Integer.MAX_VALUE);
         backgroundDisabledEndColor = ta.getColor(R.styleable.RoundTextView_rv_backgroundDisabledEndColor, Integer.MAX_VALUE);
         // 按压状态背景
@@ -119,8 +121,8 @@ public class RoundViewDelegate {
         strokePressWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokePressWidth, 0);
         strokeDisabledWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeDisabledWidth, 0);
         strokeSelectedWidth = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_strokeSelectedWidth, 0);
-        strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Color.TRANSPARENT);
-        strokeDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_strokeDisabledColor, Color.TRANSPARENT);
+        strokeColor = ta.getColor(R.styleable.RoundTextView_rv_strokeColor, Integer.MAX_VALUE);
+        strokeDisabledColor = ta.getColor(R.styleable.RoundTextView_rv_strokeDisabledColor, Integer.MAX_VALUE);
         strokePressColor = ta.getColor(R.styleable.RoundTextView_rv_strokePressColor, Integer.MAX_VALUE);
         strokeSelectedColor = ta.getColor(R.styleable.RoundTextView_rv_strokeSelectedColor, Integer.MAX_VALUE);
 
@@ -138,6 +140,9 @@ public class RoundViewDelegate {
         shadowDy = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_shadowDy, 0); // 垂直偏移量
         shadowRadius = ta.getDimensionPixelSize(R.styleable.RoundTextView_rv_shadowRadius, 0); // 阴影半径
         shadowColor = ta.getColor(R.styleable.RoundTextView_rv_shadowColor, Color.TRANSPARENT); // 阴影颜色
+
+        // 是否选中
+        isSelected = ta.getBoolean(R.styleable.RoundTextView_rv_isSelected, false);
 
         ta.recycle();
     }
@@ -221,12 +226,12 @@ public class RoundViewDelegate {
     }
 
     public void setCornerRadius(int cornerRadius) {
-        this.cornerRadius = dp2px(cornerRadius);
+        this.cornerRadius = cornerRadius;
         setBgSelector();
     }
 
     public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = dp2px(strokeWidth);
+        this.strokeWidth = strokeWidth;
         setBgSelector();
     }
 
@@ -445,7 +450,7 @@ public class RoundViewDelegate {
         return shadowColor;
     }
 
-    protected int dp2px(float dp) {
+    /*protected int dp2px(float dp) {
         if (dp == 0) {
             return 0;
         }
@@ -459,12 +464,12 @@ public class RoundViewDelegate {
         }
         final float scale = this.context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (sp * scale + 0.5f);
-    }
+    }*/
 
     private void setDrawable(GradientDrawable gd, int color, int startColor, int endColor, int strokeWidth, int strokeColor) {
         if (startColor != Integer.MAX_VALUE && endColor != Integer.MAX_VALUE) {
             gd.setColors(new int[]{startColor, endColor});
-        } else {
+        } else if (color != Integer.MAX_VALUE) {
             gd.setColor(color);
         }
 
@@ -485,7 +490,9 @@ public class RoundViewDelegate {
             gd.setCornerRadius(cornerRadius);
         }
 
-        gd.setStroke(strokeWidth, strokeColor);
+        if (strokeWidth > 0 && strokeColor != Integer.MAX_VALUE) {
+            gd.setStroke(strokeWidth, strokeColor);
+        }
     }
 
     public void setBgSelector() {
@@ -494,14 +501,13 @@ public class RoundViewDelegate {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isRippleEnable && view.isEnabled()) {
             setDrawable(gd_background, backgroundColor, backgroundStartColor, backgroundEndColor, strokeWidth, strokeColor);
             GradientDrawable background = gd_background;
-            if (view.isSelected() && (
-                    backgroundSelectedColor != Integer.MAX_VALUE
-                            || backgroundSelectedStartColor != Integer.MAX_VALUE
-                            || backgroundSelectedEndColor != Integer.MAX_VALUE
-                            || strokeSelectedColor != Integer.MAX_VALUE
-
-            )) {
-                setDrawable(gd_background_selected, backgroundSelectedColor, backgroundSelectedStartColor, backgroundSelectedEndColor, strokeSelectedWidth, strokeSelectedColor);
+            if (view.isSelected() && hasSetColor(backgroundSelectedColor, backgroundSelectedStartColor, backgroundSelectedEndColor, strokeSelectedColor)) {
+                setDrawable(gd_background_selected,
+                        backgroundSelectedColor,
+                        backgroundSelectedStartColor,
+                        backgroundSelectedEndColor,
+                        strokeSelectedWidth,
+                        strokeSelectedColor);
                 background = gd_background_selected;
             }
             //Drawable mask = new ColorDrawable(Color.BLUE);
@@ -510,33 +516,33 @@ public class RoundViewDelegate {
             view.setBackground(rippleDrawable);
         } else {
             // 设置按压状态背景色
-            if (backgroundPressColor != Integer.MAX_VALUE || strokePressColor != Integer.MAX_VALUE) {
+            if (hasSetColor(backgroundPressColor, backgroundPressStartColor, backgroundPressEndColor, strokePressColor)) {
                 setDrawable(gd_background_press,
-                        backgroundPressColor == Integer.MAX_VALUE ? backgroundColor : backgroundPressColor,
-                        backgroundPressStartColor == Integer.MAX_VALUE ? backgroundStartColor : backgroundPressStartColor,
-                        backgroundPressEndColor == Integer.MAX_VALUE ? backgroundEndColor : backgroundPressEndColor,
+                        backgroundPressColor,
+                        backgroundPressStartColor,
+                        backgroundPressEndColor,
                         strokePressWidth,
-                        strokePressColor == Integer.MAX_VALUE ? strokeColor : strokePressColor);
+                        strokePressColor);
                 bg.addState(new int[]{android.R.attr.state_pressed}, gd_background_press);
             }
             // 设置不可用状态背景色
-            if (backgroundDisabledColor != Integer.MAX_VALUE || strokeDisabledColor != Integer.MAX_VALUE) {
+            if (hasSetColor(backgroundDisabledColor, backgroundDisabledStartColor, backgroundDisabledEndColor, strokeDisabledColor)) {
                 setDrawable(gd_background_disabled,
-                        backgroundDisabledColor == Integer.MAX_VALUE ? backgroundColor : backgroundDisabledColor,
-                        backgroundDisabledStartColor == Integer.MAX_VALUE ? backgroundStartColor : backgroundDisabledStartColor,
-                        backgroundDisabledEndColor == Integer.MAX_VALUE ? backgroundEndColor : backgroundDisabledEndColor,
+                        backgroundDisabledColor,
+                        backgroundDisabledStartColor,
+                        backgroundDisabledEndColor,
                         strokeDisabledWidth,
-                        strokeDisabledColor == Integer.MAX_VALUE ? strokeColor : strokeDisabledColor);
+                        strokeDisabledColor);
                 bg.addState(new int[]{-android.R.attr.state_enabled}, gd_background_disabled);
             }
             // 设置选中状态背景色
-            if (backgroundSelectedColor != Integer.MAX_VALUE || strokeSelectedColor != Integer.MAX_VALUE) {
+            if (hasSetColor(backgroundSelectedColor, backgroundSelectedStartColor, backgroundSelectedEndColor, strokeSelectedColor)) {
                 setDrawable(gd_background_selected,
-                        backgroundSelectedColor == Integer.MAX_VALUE ? backgroundColor : backgroundSelectedColor,
-                        backgroundSelectedStartColor == Integer.MAX_VALUE ? backgroundStartColor : backgroundSelectedStartColor,
-                        backgroundSelectedEndColor == Integer.MAX_VALUE ? backgroundEndColor : backgroundSelectedEndColor,
+                        backgroundSelectedColor,
+                        backgroundSelectedStartColor,
+                        backgroundSelectedEndColor,
                         strokeSelectedWidth,
-                        strokeSelectedColor == Integer.MAX_VALUE ? strokeColor : strokeSelectedColor);
+                        strokeSelectedColor);
                 bg.addState(new int[]{android.R.attr.state_selected}, gd_background_selected);
             }
 
@@ -570,6 +576,13 @@ public class RoundViewDelegate {
                     });
             ((TextView) view).setTextColor(colorStateList);
         }
+    }
+
+    private boolean hasSetColor(int bgColor, int bgStartColor, int bgEndColor, int strokeColor) {
+        return bgColor != Integer.MAX_VALUE
+                || bgStartColor != Integer.MAX_VALUE
+                || bgEndColor != Integer.MAX_VALUE
+                || strokeColor != Integer.MAX_VALUE;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
