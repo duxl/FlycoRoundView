@@ -72,6 +72,8 @@ public class RoundViewDelegate {
 
     // 阴影
     private Paint shadowPaint;
+    private Path shadowPath;
+    private RectF shadowRect;
     private float shadowDx; // 水平偏移量
     private float shadowDy; // 垂直偏移量
     private float shadowRadius; // 阴影半径
@@ -659,7 +661,11 @@ public class RoundViewDelegate {
         if (shadowDx == 0 && shadowDy == 0) {
             return;
         }
-        Path shadowPath = new Path();
+        if(shadowPath == null) {
+            shadowPath = new Path();
+        }
+        shadowPath.reset();
+
         int width = view.getWidth();
         int height = view.getHeight();
         if (cornerRadius_TL > 0 || cornerRadius_TR > 0 || cornerRadius_BR > 0 || cornerRadius_BL > 0) {
@@ -683,8 +689,14 @@ public class RoundViewDelegate {
             radiusArr[6] = cornerRadius_BL;
             radiusArr[7] = cornerRadius_BL;
         } else {
-            RectF rect = new RectF(0, 0, width, height);
-            shadowPath.addRoundRect(rect, cornerRadius, cornerRadius, Path.Direction.CCW);
+            if(shadowRect == null) {
+                shadowRect = new RectF();
+            }
+            shadowRect.left = 0f;
+            shadowRect.top = 0f;
+            shadowRect.right = width;
+            shadowRect.bottom = height;
+            shadowPath.addRoundRect(shadowRect, cornerRadius, cornerRadius, Path.Direction.CCW);
         }
 
         if (shadowPaint == null) {
