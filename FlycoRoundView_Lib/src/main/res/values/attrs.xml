@@ -605,4 +605,19 @@
         <attr name="rv_shadowColor" />
         <attr name="rv_isSelected" />
     </declare-styleable>
+
+    <!-- 指定drawable大小的属性，优先级从低到高 -->
+    <declare-styleable name="ScaleDrawableTextView">
+        <attr name="drawableSize" format="reference|dimension" />
+        <attr name="drawableWidth" format="reference|dimension" />
+        <attr name="drawableHeight" format="reference|dimension" />
+        <attr name="drawableEndWidth" format="reference|dimension" />
+        <attr name="drawableEndHeight" format="reference|dimension" />
+        <attr name="drawableTopWidth" format="reference|dimension" />
+        <attr name="drawableTopHeight" format="reference|dimension" />
+        <attr name="drawableBottomWidth" format="reference|dimension" />
+        <attr name="drawableBottomHeight" format="reference|dimension" />
+        <attr name="drawableStartWidth" format="reference|dimension" />
+        <attr name="drawableStartHeight" format="reference|dimension" />
+    </declare-styleable>
 </resources>
